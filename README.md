@@ -25,9 +25,9 @@ python3 -m http.server 8000   # or: npx serve
 ```
 index.html        page
 styles.css        Netflix-style theme
-js/engine3d.js    characters, locations, cameras (Three.js)
-js/app.js         UI, board, PNG export
-js/vendor/        Three.js bundled with its line helpers (MIT)
+engine3d.js       characters, locations, cameras (Three.js)
+app.js            UI, board, PNG export
+three-bundle.js   Three.js bundled with its line helpers (MIT, see three-LICENSE.txt)
 ```
 
 Built by [Vamshi Creates](https://vamshicreates.tech).
