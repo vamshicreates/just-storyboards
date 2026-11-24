@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Just Storyboards — pick a character, a camera, a place</title>
+  <meta name="description" content="Make a storyboard in seconds. Pick stick-figure characters, a camera angle and a location, and Just Storyboards shoots the frame in 3D. Download it as an image.">
+  <meta name="theme-color" content="#141414">
+  <meta property="og:title" content="Just Storyboards">
+  <meta property="og:description" content="Pick characters, a camera angle and a location. Get the storyboard frame. Download it as a PNG.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./" aria-label="Just Storyboards">
+      <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect x="3" y="11" width="26" height="17" rx="2.5" fill="#e50914"/><path d="M3 11l3-7 6 2-3 5zM13 6l6 2-3 5-6-2zM21 8l6 2-3 5-6-2z" fill="#fff" stroke="#141414" stroke-width="1" stroke-linejoin="round"/></svg>
+      <span>JUST STORYBOARDS</span>
+    </a>
+    <p class="tag">Pick a character. Pick a camera. Pick a place.</p>
+  </header>
+
+  <main class="app">
+    <section class="stage" id="stage" aria-label="Preview">
+      <div class="frame" id="frame">
+        <canvas id="preview" aria-label="Storyboard frame preview"></canvas>
+        <span class="chip" id="chip"></span>
+        <div class="empty" id="empty" hidden>Pick at least one character to start your shot.</div>
+      </div>
+      <div class="caption-row">
+        <div class="shotinfo"><strong id="shotTitle">Shot</strong><span id="shotMeta"></span></div>
+      </div>
+      <div class="editing" id="editing" hidden>
+        <span id="editingText"></span>
+        <button class="link" id="cancelEdit" type="button">Cancel</button>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="addBtn" type="button">Add to board</button>
+        <button class="btn" id="addNewBtn" type="button" hidden>Add as new shot</button>
+        <button class="btn ghost" id="dlPanel" type="button">Download shot (PNG)</button>
+      </div>
+    </section>
+
+    <section class="controls" id="controls" aria-label="Shot settings">
+      <div class="step">
+        <h2><span class="n">1</span>Characters</h2>
+        <p class="hint">Tap to add or remove. Your first pick is the main character for Over the shoulder, POV and Extreme close-up.</p>
+        <div class="cards chars" id="chars"></div>
+      </div>
+
+      <div class="step">
+        <h2><span class="n">2</span>Camera angle</h2>
+        <div class="cards angles" id="angles"></div>
+        <p class="hint" id="angleHint"></p>
+      </div>
+
+      <div class="step">
+        <h2><span class="n">3</span>Location</h2>
+        <div class="cards locs" id="locs"></div>
+      </div>
+
+      <div class="step">
+        <h2><span class="n">4</span>Pose &amp; expression</h2>
+        <div class="seg-label">Pose</div>
+        <div class="seg" id="poses" role="group" aria-label="Pose"></div>
+        <div class="seg-label">Expression</div>
+        <div class="seg" id="moods" role="group" aria-label="Expression"></div>
+        <div class="seg-label">Frame shape</div>
+        <div class="seg" id="aspects" role="group" aria-label="Frame shape"></div>
+      </div>
+
+      <div class="step">
+        <h2><span class="n">5</span>Notes <small>optional</small></h2>
+        <label class="field"><span>Action</span><textarea id="action" rows="2" maxlength="220" placeholder="What happens in this shot?"></textarea></label>
+        <label class="field"><span>Dialogue</span><input id="dialogue" type="text" maxlength="140" placeholder="What is said?"></label>
+      </div>
+    </section>
+  </main>
+
+  <section class="board" id="boardSection" aria-label="Storyboard">
+    <div class="board-head">
+      <div class="title-wrap">
+        <label for="title" class="visually-hidden">Storyboard title</label>
+        <input id="title" class="title" type="text" maxlength="60" value="Untitled storyboard" spellcheck="false">
+        <span class="count" id="count"></span>
+      </div>
+      <div class="board-tools">
+        <div class="seg small" id="sheetTheme" role="group" aria-label="Sheet colour"></div>
+        <button class="btn primary" id="dlBoard" type="button">Download storyboard (PNG)</button>
+        <button class="btn ghost" id="clearBoard" type="button">Clear</button>
+      </div>
+    </div>
+    <div class="shots" id="shots"></div>
+    <p class="board-empty" id="boardEmpty">Your storyboard is empty. Build a shot above and press <b>Add to board</b>.</p>
+  </section>
+
+  <footer class="foot">
+    <span>Built by <a href="https://vamshicreates.tech" target="_blank" rel="noopener">Vamshi Creates</a></span>
+    <span>Everything runs in your browser. Nothing is uploaded.</span>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
